@@ -1,3 +1,5 @@
 <Solution>
+  <Project Path="Biljkovoditelj.app/Biljkovoditelj.app.csproj" Id="9cbb9ed5-0d2f-4815-8ba3-9b63be128482" />
+  <Project Path="Biljkovoditelj.model/Biljkovoditelj.model.csproj" Id="88b808c0-0468-4c84-8ca5-5bd698978073" />
   <Project Path="Biljkovoditelj/Biljkovoditelj.csproj" />
 </Solution>

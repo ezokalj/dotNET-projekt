@@ -1,0 +1,1 @@
+$input | Out-String | Add-Content -Path "D:\asp.net\Repos\Biljkovoditelj\Biljkovoditelj\lab-1\agent_log.txt"

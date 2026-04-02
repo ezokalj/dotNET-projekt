@@ -1,0 +1,4 @@
+TEST LOG
+
+{"timestamp":"2026-04-01T17:31:23.990Z","hook_event_name":"UserPromptSubmit","session_id":"a67ac28e-1104-4fa1-aad6-2831abe833e2","transcript_path":"c:\\Users\\Edi\\AppData\\Roaming\\Code\\User\\workspaceStorage\\d6fc5512dccdc5f9b2fa777e31079654\\GitHub.copilot-chat\\transcripts\\a67ac28e-1104-4fa1-aad6-2831abe833e2.jsonl","prompt":"pozdrav","cwd":"d:\\asp.net\\Repos\\Biljkovoditelj"}
+
