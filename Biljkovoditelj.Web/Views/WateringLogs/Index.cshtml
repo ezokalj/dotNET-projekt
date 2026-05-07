@@ -1,0 +1,50 @@
+@model IEnumerable<Biljkovoditelj.model.Entities.WateringLog>
+
+@{
+    ViewData["Title"] = "Watering Logs";
+}
+
+<div class="entity-header">
+    <h1>💧 Watering Logs</h1>
+    <p>Plant watering history and records</p>
+</div>
+
+<div class="entity-grid">
+    @foreach (var log in Model)
+    {
+        <div class="entity-card">
+            <div class="entity-card-header">
+                <h3>@log.AmountMl ml Watered</h3>
+                <span class="entity-id">#@log.Id</span>
+            </div>
+            <div class="entity-card-content">
+                <div class="entity-stat">
+                    <span class="stat-label">Date:</span>
+                    <span class="stat-value">@log.Date.ToString("MMM dd, yyyy")</span>
+                </div>
+                <div class="entity-stat">
+                    <span class="stat-label">Amount:</span>
+                    <span class="stat-value">@log.AmountMl ml</span>
+                </div>
+                @if (!string.IsNullOrEmpty(log.Notes))
+                {
+                    <div class="entity-stat">
+                        <span class="stat-label">Notes:</span>
+                        <span class="stat-value">@log.Notes</span>
+                    </div>
+                }
+                <div class="entity-stat">
+                    <span class="stat-label">Plant ID:</span>
+                    <span class="stat-value">@log.plantId</span>
+                </div>
+            </div>
+            <div class="entity-card-actions">
+                <a href="/WateringLogs/Details/@log.Id" class="btn-details">View Details</a>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="back-link">
+    <a href="/">← Back to Dashboard</a>
+</div>

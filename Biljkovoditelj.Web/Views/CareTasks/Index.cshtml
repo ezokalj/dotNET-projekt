@@ -1,0 +1,49 @@
+@model IEnumerable<Biljkovoditelj.model.Entities.CareTask>
+
+@{
+    ViewData["Title"] = "Care Tasks";
+}
+
+<div class="entity-header">
+    <h1>📋 Care Tasks</h1>
+    <p>Plant care tasks and maintenance activities</p>
+</div>
+
+<div class="entity-grid">
+    @foreach (var task in Model)
+    {
+        <div class="entity-card @(task.isIsCompleted ? "completed" : "pending")">
+            <div class="entity-card-header">
+                <h3>@task.Title</h3>
+                <span class="entity-id">#@task.Id</span>
+            </div>
+            <div class="entity-card-content">
+                <div class="entity-stat">
+                    <span class="stat-label">Description:</span>
+                    <span class="stat-value">@task.Description</span>
+                </div>
+                <div class="entity-stat">
+                    <span class="stat-label">Due Date:</span>
+                    <span class="stat-value">@task.DueDate.ToString("MMM dd, yyyy")</span>
+                </div>
+                <div class="entity-stat">
+                    <span class="stat-label">Status:</span>
+                    <span class="stat-value @(task.isIsCompleted ? "status-completed" : "status-pending")">
+                        @(task.isIsCompleted ? "Completed" : "Pending")
+                    </span>
+                </div>
+                <div class="entity-stat">
+                    <span class="stat-label">Plant ID:</span>
+                    <span class="stat-value">@task.PlantId</span>
+                </div>
+            </div>
+            <div class="entity-card-actions">
+                <a href="/CareTasks/Details/@task.Id" class="btn-details">View Details</a>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="back-link">
+    <a href="/">← Back to Dashboard</a>
+</div>

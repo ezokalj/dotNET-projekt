@@ -1,0 +1,76 @@
+﻿@model Biljkovoditelj.model.Entities.Plant
+
+@{
+    ViewData["Title"] = $"Plant - @Model.Name";
+}
+
+<div class="entity-detail">
+    <div class="entity-detail-header">
+        <h1>🌱 @Model.Name</h1>
+        <span class="entity-id">#@Model.Id</span>
+    </div>
+
+    <div class="detail-grid">
+        <div class="detail-card">
+            <h3>Plant Information</h3>
+            <div class="detail-stats">
+                <div class="detail-stat">
+                    <span class="stat-label">Name:</span>
+                    <span class="stat-value">@Model.Name</span>
+                </div>
+                <div class="detail-stat">
+                    <span class="stat-label">Species:</span>
+                    <span class="stat-value">@Model.Species</span>
+                </div>
+                <div class="detail-stat">
+                    <span class="stat-label">Age:</span>
+                    <span class="stat-value">@Model.Age years</span>
+                </div>
+                <div class="detail-stat">
+                    <span class="stat-label">Watering Interval:</span>
+                    <span class="stat-value">@Model.WateringIntervalDays days</span>
+                </div>
+                <div class="detail-stat">
+                    <span class="stat-label">Last Watered:</span>
+                    <span class="stat-value">@Model.LastWatered.ToString("MMMM dd, yyyy")</span>
+                </div>
+                <div class="detail-stat">
+                    <span class="stat-label">Health Status:</span>
+                    <span class="stat-value">@Model.HealthStatus</span>
+                </div>
+                <div class="detail-stat">
+                    <span class="stat-label">Room ID:</span>
+                    <span class="stat-value">@Model.RoomId</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="detail-card">
+            <h3>Care Tasks (@Model.CareTasks.Count)</h3>
+            @if (Model.CareTasks.Any())
+            {
+                <div class="tasks-list">
+                    @foreach (var task in Model.CareTasks)
+                    {
+                        <div class="task-item @(task.isIsCompleted ? "completed" : "pending")">
+                            <div class="task-info">
+                                <strong>@task.Title</strong>
+                                <span class="task-description">@task.Description</span>
+                                <span class="task-due">Due: @task.DueDate.ToString("MMM dd")</span>
+                            </div>
+                            <a href="/CareTasks/Details/@task.Id" class="task-link">View Task</a>
+                        </div>
+                    }
+                </div>
+            }
+            else
+            {
+                <p class="empty-state">No care tasks for this plant</p>
+            }
+        </div>
+    </div>
+
+    <div class="back-link">
+        <a href="/Plants">← Back to Plants</a>
+    </div>
+</div>

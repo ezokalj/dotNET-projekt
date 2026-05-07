@@ -173,7 +173,7 @@ foreach (var plant in plantsThatNeedWater)
     Console.WriteLine(plant.Name);
 }
 
-//LINQ biljka u jako osvjetlj enim sobama
+//LINQ biljka u jako osvjetljenim sobama
 var brightRoomPlants =
     rooms
         .Where(r => r.LightLevel >= 8)
@@ -186,7 +186,7 @@ foreach (var plant in brightRoomPlants)
     Console.WriteLine(plant.Name);
 }
 
-//Broj biljaka u sobi
+//LINQ broj biljaka u sobi
 var plantCountPerRoom =
     rooms.Select(r => new
     {

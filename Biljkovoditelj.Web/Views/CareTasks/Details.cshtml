@@ -1,0 +1,54 @@
+@model Biljkovoditelj.model.Entities.CareTask
+
+@{
+    ViewData["Title"] = $"Care Task - @Model.Title";
+}
+
+<div class="entity-detail">
+    <div class="entity-detail-header">
+        <h1>📋 @Model.Title</h1>
+        <span class="entity-id">#@Model.Id</span>
+    </div>
+
+    <div class="detail-grid">
+        <div class="detail-card">
+            <h3>Task Details</h3>
+            <div class="detail-stats">
+                <div class="detail-stat">
+                    <span class="stat-label">Title:</span>
+                    <span class="stat-value">@Model.Title</span>
+                </div>
+                <div class="detail-stat">
+                    <span class="stat-label">Description:</span>
+                    <span class="stat-value">@Model.Description</span>
+                </div>
+                <div class="detail-stat">
+                    <span class="stat-label">Due Date:</span>
+                    <span class="stat-value">@Model.DueDate.ToString("MMMM dd, yyyy HH:mm")</span>
+                </div>
+                <div class="detail-stat">
+                    <span class="stat-label">Status:</span>
+                    <span class="stat-value @(Model.isIsCompleted ? "status-completed" : "status-pending")">
+                        @(Model.isIsCompleted ? "Completed" : "Pending")
+                    </span>
+                </div>
+                <div class="detail-stat">
+                    <span class="stat-label">Plant ID:</span>
+                    <span class="stat-value">@Model.PlantId</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="detail-card">
+            <h3>Related Plant</h3>
+            <div class="plant-info-card">
+                <p>This task is associated with Plant ID: @Model.PlantId</p>
+                <a href="/Plants/Details/@Model.PlantId" class="plant-link">View Plant Details</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="back-link">
+        <a href="/CareTasks">← Back to Care Tasks</a>
+    </div>
+</div>

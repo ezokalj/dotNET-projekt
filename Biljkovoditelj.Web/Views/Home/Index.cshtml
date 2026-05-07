@@ -1,0 +1,103 @@
+﻿@model Biljkovoditelj.Web.Models.HomeViewModel
+
+@{
+    ViewData["Title"] = "Biljkovoditelj - Plant Care Dashboard";
+}
+
+<div class="dashboard-container">
+    <div class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">🌿 Biljkovoditelj</h1>
+            <p class="hero-subtitle">Your intelligent plant care companion</p>
+        </div>
+    </div>
+
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-icon">🌱</div>
+            <div class="stat-number">@Model.TotalPlants</div>
+            <div class="stat-label">Plants</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">🏠</div>
+            <div class="stat-number">@Model.TotalRooms</div>
+            <div class="stat-label">Rooms</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">👥</div>
+            <div class="stat-number">@Model.TotalUsers</div>
+            <div class="stat-label">Users</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">📋</div>
+            <div class="stat-number">@Model.PendingTasks</div>
+            <div class="stat-label">Pending Tasks</div>
+        </div>
+    </div>
+
+    <div class="content-grid">
+        <div class="dashboard-card">
+            <div class="card-header">
+                <h3>🔔 Recent Reminders</h3>
+                <a href="/Reminders" class="card-link">View All</a>
+            </div>
+            <div class="card-content">
+                @if (Model.RecentReminders.Any())
+                {
+                    foreach (var reminder in Model.RecentReminders)
+                    {
+                        <div class="reminder-item">
+                            <div class="reminder-message">@reminder.Message</div>
+                            <div class="reminder-date">@reminder.ReminderDate.ToString("MMM dd, HH:mm")</div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <p class="empty-state">No recent reminders</p>
+                }
+            </div>
+        </div>
+
+        <div class="dashboard-card">
+            <div class="card-header">
+                <h3>💧 Recent Watering</h3>
+                <a href="/WateringLogs" class="card-link">View All</a>
+            </div>
+            <div class="card-content">
+                @if (Model.RecentWateringLogs.Any())
+                {
+                    foreach (var log in Model.RecentWateringLogs)
+                    {
+                        <div class="watering-item">
+                            <div class="watering-amount">@log.AmountMl ml</div>
+                            <div class="watering-date">@log.Date.ToString("MMM dd")</div>
+                            @if (!string.IsNullOrEmpty(log.Notes))
+                            {
+                                <div class="watering-notes">@log.Notes</div>
+                            }
+                        </div>
+                    }
+                }
+                else
+                {
+                    <p class="empty-state">No recent watering logs</p>
+                }
+            </div>
+        </div>
+
+        <div class="dashboard-card">
+            <div class="card-header">
+                <h3>🚀 Quick Actions</h3>
+            </div>
+            <div class="card-content">
+                <div class="action-buttons">
+                    <a href="/Plants" class="action-btn">🌱 View Plants</a>
+                    <a href="/Rooms" class="action-btn">🏠 View Rooms</a>
+                    <a href="/Users" class="action-btn">👥 View Users</a>
+                    <a href="/CareTasks" class="action-btn">📋 View Tasks</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

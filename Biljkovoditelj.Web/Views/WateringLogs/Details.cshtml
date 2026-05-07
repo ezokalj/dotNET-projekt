@@ -1,0 +1,48 @@
+@model Biljkovoditelj.model.Entities.WateringLog
+
+@{
+    ViewData["Title"] = $"Watering Log - @Model.AmountMl ml";
+}
+
+<div class="entity-detail">
+    <div class="entity-detail-header">
+        <h1>💧 Watering Log</h1>
+        <span class="entity-id">#@Model.Id</span>
+    </div>
+
+    <div class="detail-grid">
+        <div class="detail-card">
+            <h3>Watering Details</h3>
+            <div class="detail-stats">
+                <div class="detail-stat">
+                    <span class="stat-label">Date:</span>
+                    <span class="stat-value">@Model.Date.ToString("MMMM dd, yyyy HH:mm")</span>
+                </div>
+                <div class="detail-stat">
+                    <span class="stat-label">Amount:</span>
+                    <span class="stat-value">@Model.AmountMl ml</span>
+                </div>
+                <div class="detail-stat">
+                    <span class="stat-label">Notes:</span>
+                    <span class="stat-value">@(string.IsNullOrEmpty(Model.Notes) ? "No notes" : Model.Notes)</span>
+                </div>
+                <div class="detail-stat">
+                    <span class="stat-label">Plant ID:</span>
+                    <span class="stat-value">@Model.plantId</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="detail-card">
+            <h3>Related Plant</h3>
+            <div class="plant-info-card">
+                <p>This watering log is for Plant ID: @Model.plantId</p>
+                <a href="/Plants/Details/@Model.plantId" class="plant-link">View Plant Details</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="back-link">
+        <a href="/WateringLogs">← Back to Watering Logs</a>
+    </div>
+</div>

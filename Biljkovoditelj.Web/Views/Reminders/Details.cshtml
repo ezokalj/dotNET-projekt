@@ -1,0 +1,44 @@
+@model Biljkovoditelj.model.Entities.Reminder
+
+@{
+    ViewData["Title"] = $"Reminder - @Model.Message";
+}
+
+<div class="entity-detail">
+    <div class="entity-detail-header">
+        <h1>🔔 Reminder</h1>
+        <span class="entity-id">#@Model.Id</span>
+    </div>
+
+    <div class="detail-grid">
+        <div class="detail-card">
+            <h3>Reminder Details</h3>
+            <div class="detail-stats">
+                <div class="detail-stat">
+                    <span class="stat-label">Message:</span>
+                    <span class="stat-value">@Model.Message</span>
+                </div>
+                <div class="detail-stat">
+                    <span class="stat-label">Reminder Date:</span>
+                    <span class="stat-value">@Model.ReminderDate.ToString("MMMM dd, yyyy HH:mm")</span>
+                </div>
+                <div class="detail-stat">
+                    <span class="stat-label">Plant ID:</span>
+                    <span class="stat-value">@Model.PlantId</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="detail-card">
+            <h3>Related Plant</h3>
+            <div class="plant-info-card">
+                <p>This reminder is for Plant ID: @Model.PlantId</p>
+                <a href="/Plants/Details/@Model.PlantId" class="plant-link">View Plant Details</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="back-link">
+        <a href="/Reminders">← Back to Reminders</a>
+    </div>
+</div>
