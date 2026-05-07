@@ -1,4 +1,4 @@
-﻿@model Biljkovoditelj.model.Entities.Plant
+@model Biljkovoditelj.model.Entities.Plant
 
 @{
     ViewData["Title"] = $"Plant - @Model.Name";
@@ -6,7 +6,7 @@
 
 <div class="entity-detail">
     <div class="entity-detail-header">
-        <h1>🌱 @Model.Name</h1>
+        <h1>?? @Model.Name</h1>
         <span class="entity-id">#@Model.Id</span>
     </div>
 
@@ -52,7 +52,7 @@
                 <div class="tasks-list">
                     @foreach (var task in Model.CareTasks)
                     {
-                        <div class="task-item @(task.isIsCompleted ? "completed" : "pending")">
+                        <div class="task-item @(task.IsCompleted ? "completed" : "pending")">
                             <div class="task-info">
                                 <strong>@task.Title</strong>
                                 <span class="task-description">@task.Description</span>
@@ -71,6 +71,6 @@
     </div>
 
     <div class="back-link">
-        <a href="/Plants">← Back to Plants</a>
+        <a href="/Plants">? Back to Plants</a>
     </div>
 </div>

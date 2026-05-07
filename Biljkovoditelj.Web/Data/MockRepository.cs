@@ -57,7 +57,7 @@ namespace Biljkovoditelj.Web.Data
                 {
                     Id = 1,
                     Name = "John Doe",
-                    email = "john@example.com",
+                    Email = "john@example.com",
                     Plants = new List<Plant>
                     {
                         new Plant { Id = 1, Name = "Monstera", Species = "Monstera Deliciosa" },
@@ -68,7 +68,7 @@ namespace Biljkovoditelj.Web.Data
                 {
                     Id = 2,
                     Name = "Jane Smith",
-                    email = "jane@example.com",
+                    Email = "jane@example.com",
                     Plants = new List<Plant>
                     {
                         new Plant { Id = 3, Name = "Snake Plant", Species = "Sansevieria" }
@@ -93,7 +93,7 @@ namespace Biljkovoditelj.Web.Data
                     Title = "Water Monstera",
                     Description = "Water the Monstera in the living room",
                     DueDate = DateTime.Now.AddDays(2),
-                    isIsCompleted = false,
+                    IsCompleted = false,
                     PlantId = 1
                 },
                 new CareTask
@@ -102,7 +102,7 @@ namespace Biljkovoditelj.Web.Data
                     Title = "Fertilize Ficus",
                     Description = "Apply fertilizer to the Ficus",
                     DueDate = DateTime.Now.AddDays(7),
-                    isIsCompleted = false,
+                    IsCompleted = false,
                     PlantId = 2
                 },
                 new CareTask
@@ -111,7 +111,7 @@ namespace Biljkovoditelj.Web.Data
                     Title = "Prune Snake Plant",
                     Description = "Remove dead leaves from Snake Plant",
                     DueDate = DateTime.Now.AddDays(5),
-                    isIsCompleted = true,
+                    IsCompleted = true,
                     PlantId = 3
                 }
             };
@@ -167,7 +167,7 @@ namespace Biljkovoditelj.Web.Data
                     Date = DateTime.Now.AddDays(-1),
                     AmountMl = 500,
                     Notes = "Plant looked thirsty",
-                    plantId = 1
+                    PlantId = 1
                 },
                 new WateringLog
                 {
@@ -175,7 +175,7 @@ namespace Biljkovoditelj.Web.Data
                     Date = DateTime.Now.AddDays(-3),
                     AmountMl = 300,
                     Notes = "Regular watering schedule",
-                    plantId = 2
+                    PlantId = 2
                 },
                 new WateringLog
                 {
@@ -183,7 +183,7 @@ namespace Biljkovoditelj.Web.Data
                     Date = DateTime.Now.AddDays(-2),
                     AmountMl = 200,
                     Notes = "Light watering",
-                    plantId = 3
+                    PlantId = 3
                 }
             };
         }

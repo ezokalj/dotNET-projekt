@@ -14,7 +14,7 @@ namespace Biljkovoditelj.Web.Controllers
                 TotalPlants = MockRepository.GetPlants().Count,
                 TotalRooms = MockRepository.GetRooms().Count,
                 TotalUsers = MockRepository.GetUsers().Count,
-                PendingTasks = MockRepository.GetCareTasks().Count(ct => !ct.isIsCompleted),
+                PendingTasks = MockRepository.GetCareTasks().Count(ct => !ct.IsCompleted),
                 RecentReminders = MockRepository.GetReminders().Take(3).ToList(),
                 RecentWateringLogs = MockRepository.GetWateringLogs().Take(3).ToList()
             };

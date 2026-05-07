@@ -12,7 +12,7 @@
 <div class="entity-grid">
     @foreach (var task in Model)
     {
-        <div class="entity-card @(task.isIsCompleted ? "completed" : "pending")">
+        <div class="entity-card @(task.IsCompleted ? "completed" : "pending")">
             <div class="entity-card-header">
                 <h3>@task.Title</h3>
                 <span class="entity-id">#@task.Id</span>
@@ -28,8 +28,8 @@
                 </div>
                 <div class="entity-stat">
                     <span class="stat-label">Status:</span>
-                    <span class="stat-value @(task.isIsCompleted ? "status-completed" : "status-pending")">
-                        @(task.isIsCompleted ? "Completed" : "Pending")
+                    <span class="stat-value @(task.IsCompleted ? "status-completed" : "status-pending")">
+                        @(task.IsCompleted ? "Completed" : "Pending")
                     </span>
                 </div>
                 <div class="entity-stat">

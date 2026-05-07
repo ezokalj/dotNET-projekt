@@ -4,48 +4,90 @@
     ViewData["Title"] = "Plants";
 }
 
-<div class="entity-header">
-    <h1>🌱 Plants</h1>
-    <p>Your plant collection and care information</p>
-</div>
+<div class="dashboard-container">
+    <div class="hero-section">
+        <h1 class="hero-title">🌿 Plant Collection</h1>
+        <p class="hero-subtitle">Monitor and care for your green companions</p>
+    </div>
 
-<div class="entity-grid">
-    @foreach (var plant in Model)
-    {
-        <div class="entity-card">
-            <div class="entity-card-header">
-                <h3>@plant.Name</h3>
-                <span class="entity-id">#@plant.Id</span>
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-icon">🌱</div>
+            <div class="stat-number">@Model.Count</div>
+            <div class="stat-label">Total Plants</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">💚</div>
+            <div class="stat-number">@Model.Count(p => p.HealthStatus == Biljkovoditelj.model.Entities.HealthStatus.Healthy)</div>
+            <div class="stat-label">Healthy Plants</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">🚨</div>
+            <div class="stat-number">@Model.Count(p => p.HealthStatus != Biljkovoditelj.model.Entities.HealthStatus.Healthy)</div>
+            <div class="stat-label">Need Attention</div>
+        </div>
+    </div>
+
+    <div class="content-grid">
+        <div class="dashboard-card">
+            <div class="card-header">
+                <h3>Your Plants</h3>
+                <a href="/Plants/Create" class="card-link">+ Add Plant</a>
             </div>
-            <div class="entity-card-content">
-                <div class="entity-stat">
-                    <span class="stat-label">Species:</span>
-                    <span class="stat-value">@plant.Species</span>
-                </div>
-                <div class="entity-stat">
-                    <span class="stat-label">Age:</span>
-                    <span class="stat-value">@plant.Age years</span>
-                </div>
-                <div class="entity-stat">
-                    <span class="stat-label">Watering Interval:</span>
-                    <span class="stat-value">@plant.WateringIntervalDays days</span>
-                </div>
-                <div class="entity-stat">
-                    <span class="stat-label">Last Watered:</span>
-                    <span class="stat-value">@plant.LastWatered.ToString("MMM dd")</span>
-                </div>
-                <div class="entity-stat">
-                    <span class="stat-label">Health:</span>
-                    <span class="stat-value">@plant.HealthStatus</span>
-                </div>
-            </div>
-            <div class="entity-card-actions">
-                <a href="/Plants/Details/@plant.Id" class="btn-details">View Details</a>
+            <div class="card-content">
+                @if (Model.Any())
+                {
+                    <div class="entity-grid">
+                        @foreach (var plant in Model)
+                        {
+                            <div class="entity-card @(plant.HealthStatus == Biljkovoditelj.model.Entities.HealthStatus.Healthy ? "healthy" : "needs-attention")">
+                                <div class="entity-card-header">
+                                    <div class="plant-icon">
+                                        🌿
+                                    </div>
+                                    <div class="plant-info">
+                                        <h3>@plant.Name</h3>
+                                        <span class="entity-id">#@plant.Id</span>
+                                    </div>
+                                </div>
+                                <div class="entity-card-content">
+                                    <div class="entity-stat">
+                                        <span class="stat-label">Species:</span>
+                                        <span class="stat-value">@plant.Species</span>
+                                    </div>
+                                    <div class="entity-stat">
+                                        <span class="stat-label">Health Status:</span>
+                                        <span class="stat-value health-status @(plant.HealthStatus.ToString().ToLower().Replace(" ", "-"))">@plant.HealthStatus</span>
+                                    </div>
+                                    <div class="entity-stat">
+                                        <span class="stat-label">Last Watered:</span>
+                                        <span class="stat-value">@plant.LastWatered.ToString("MMM dd, yyyy")</span>
+                                    </div>
+                                    <div class="entity-stat">
+                                        <span class="stat-label">Watering Interval:</span>
+                                        <span class="stat-value">@plant.WateringIntervalDays days</span>
+                                    </div>
+                                </div>
+                                <div class="entity-card-actions">
+                                    <a href="/Plants/Details/@plant.Id" class="btn-details">View Details</a>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                }
+                else
+                {
+                    <div class="empty-state">
+                        <p>No plants in your collection yet.</p>
+                        <a href="/Plants/Create" class="action-btn">Add Your First Plant</a>
+                    </div>
+                }
             </div>
         </div>
-    }
-</div>
+    </div>
 
-<div class="back-link">
-    <a href="/">← Back to Dashboard</a>
+    <div class="back-link">
+        <a href="/">← Back to Dashboard</a>
+    </div>
+</div>
 </div>
